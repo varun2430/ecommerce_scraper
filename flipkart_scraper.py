@@ -100,7 +100,13 @@ class FlipkartAPI:
 
 if __name__ == "__main__":
 
-    URL = "https://www.flipkart.com/yonex-mavis-200i-green-cap-nylon-shuttle-yellow/p/itmf3y44hzvgzb3q?pid=STLEKPFGJRHZHGHR&lid=LSTSTLEKPFGJRHZHGHRS3L7QV&marketplace=FLIPKART&store=abc%2Fegs&srno=b_1_4&otracker=browse&fm=organic&iid=f41c966a-560e-494b-8b9b-847776ee49b4.STLEKPFGJRHZHGHR.SEARCH&ppt=browse&ppn=browse&ssid=uhtzrywf7k0000001645780313523"
+    URL = [ "https://www.flipkart.com/acer-aspire-7-core-i5-10th-gen-8-gb-512-gb-ssd-windows-10-home-4-graphics-nvidia-geforce-gtx-1650-a715-75g-50ta-a715-75g-41g-a715-75g-52aa-gaming-laptop/p/itm365d5a348ad9c?pid=COMG2KBG2K4GFFF7&lid=LSTCOMG2KBG2K4GFFF78YBPHO&marketplace=FLIPKART&store=4rr%2Ftz1&spotlightTagId=BestvalueId_4rr%2Ftz1&srno=b_1_3&otracker=browse&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_3_L2_view-all&fm=organic&iid=c414703c-341a-4ce0-94f4-293ace434103.COMG2KBG2K4GFFF7.SEARCH&ppt=browse&ppn=browse&ssid=udduxj3zgw0000001645786871745",
+    "https://www.flipkart.com/asus-vivobook-gaming-core-i5-9th-gen-8-gb-1-tb-hdd-256-gb-ssd-windows-10-home-4-graphics-nvidia-geforce-gtx-1650-f571gt-hn1062t-laptop/p/itm17141ef4f3a14?pid=COMG5QHN77MU7AGD&lid=LSTCOMG5QHN77MU7AGD4M21N0&marketplace=FLIPKART&store=4rr%2Ftz1&srno=b_1_4&otracker=browse&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_3_L2_view-all&fm=organic&iid=c414703c-341a-4ce0-94f4-293ace434103.COMG5QHN77MU7AGD.SEARCH&ppt=browse&ppn=browse",
+    "https://www.flipkart.com/acer-aspire-7-ryzen-5-hexa-core-5500u-8-gb-512-gb-ssd-windows-10-home-4-graphics-nvidia-geforce-gtx-1650-a715-42g-gaming-laptop/p/itm4385fddc2c72c?pid=COMGYCG8ZBXWPYUU&lid=LSTCOMGYCG8ZBXWPYUUYQDSM8&marketplace=FLIPKART&store=4rr%2Ftz1&srno=b_1_5&otracker=browse&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_3_L2_view-all&fm=organic&iid=c414703c-341a-4ce0-94f4-293ace434103.COMGYCG8ZBXWPYUU.SEARCH&ppt=browse&ppn=browse",
+    "https://www.flipkart.com/asus-tuf-gaming-f17-2021-core-i5-11th-gen-8-gb-1-tb-ssd-windows-10-home-4-gb-graphics-nvidia-geforce-rtx-3050-144-hz-fx706hc-hx070t-laptop/p/itmce7443dfb4e63?pid=COMG3ZF8XHHDEMTV&lid=LSTCOMG3ZF8XHHDEMTVFXM49Y&marketplace=FLIPKART&store=4rr%2Ftz1&srno=b_1_6&otracker=browse&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_3_L2_view-all&fm=organic&iid=en_bJtKxD0vLaqn9t9L1ZYawtRkC31hMamj72f8xinBMcWWOdWGvHUS2ij7iyZJ%2FziLdZ1yWtHMXstYG174BU7MCw%3D%3D&ppt=browse&ppn=browse",
+    "https://www.flipkart.com/msi-gf63-thin-core-i7-10th-gen-8-gb-1-tb-hdd-256-gb-ssd-windows-10-home-4-graphics-nvidia-geforce-gtx-1650-max-q-60-hz-10scxr-1617in-10sc-610in-gaming-laptop/p/itm1e259df16e2f5?pid=COMG2K9ZZYFYGPHZ&lid=LSTCOMG2K9ZZYFYGPHZNV5YXK&marketplace=FLIPKART&store=4rr%2Ftz1&srno=b_1_7&otracker=browse&otracker1=hp_rich_navigation_PINNED_neo%2Fmerchandising_NA_NAV_EXPANDABLE_navigationCard_cc_3_L2_view-all&fm=organic&iid=c414703c-341a-4ce0-94f4-293ace434103.COMG2K9ZZYFYGPHZ.SEARCH&ppt=browse&ppn=browse" ]
 
-    flk = FlipkartAPI()
-    flk.get_product_info(URL)
+    for url in URL:
+        print("")
+        flk = FlipkartAPI()
+        flk.get_product_info(url)
