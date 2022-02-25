@@ -55,7 +55,10 @@ def price_to_float(price):
 class AmazonAPI:
     def __init__(self):
         pass
+    
 
+    def get_baseURL(self, asin):
+        return "https://www.amazon.in/dp/" + asin
 
     def get_productASIN(slef, URL):
         asin = re.search(r"/([a-zA-Z0-9]{10})(?:[/?]|$)", URL)
@@ -64,7 +67,7 @@ class AmazonAPI:
 
     def get_productTitle(self, soup):
         try:
-            title = get_productTitle_span(soup).string
+            title = get_productTitle_span(soup).text
         except Exception as err:
             print("unabel to get product title")
             print(err)
@@ -75,24 +78,22 @@ class AmazonAPI:
         apexDesktop_soup = get_apexDesktop_div(soup)
         try:
             if get_price_span(soup):
-                price = get_price_span(soup).string
-
+                price = get_price_span(soup).text
             elif get_apexPriceToPay_class(apexDesktop_soup):
-                price = get_apexPriceToPay_class(apexDesktop_soup).find("span").string
-
+                price = get_apexPriceToPay_class(apexDesktop_soup).find("span").text
             elif get_priceToPay_class(apexDesktop_soup):
-                price = get_priceToPay_class(apexDesktop_soup).find("span").string
+                price = get_priceToPay_class(apexDesktop_soup).find("span").text
+            price = price_to_float(price)
         except Exception as err:
             print("unable to get product price")
             print(err)
-        return price_to_float(price)
+        return price
 
 
     def get_product_info(self, URL):
-
         try:
             self.asin = self.get_productASIN(URL)
-            self.base_url = "https://www.amazon.in/dp/" + self.asin
+            self.base_url = self.get_baseURL(self.asin)
         except Exception as err:
             print("invalid url")
             print(err)
@@ -112,7 +113,7 @@ class AmazonAPI:
 
 if __name__ == "__main__":
     
-    URL = "https://www.amazon.in/Previous-Question-Chapterwise-Topicwise-Solutions/dp/B09HTLGSQF/ref=sr_1_6?pf_rd_i=976389031&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_p=1bbcfb5b-c408-4b8e-a900-fbf00d05056f&pf_rd_r=3ET3WSDC3TKAJH8B80GH&pf_rd_s=merchandised-search-8&pf_rd_t=30901&qid=1645617822&refinements=p_85%3A10440599031%2Cp_n_binding_browse-bin%3A9839915031%2Cp_n_availability%3A1318484031&rps=1&s=books&sr=1-6"
+    URL = "https://www.amazon.in/Arihant-Mathematics-Standard-Class-Theory/dp/9325796600/ref=sr_1_2?pf_rd_i=4149807031&pf_rd_m=A1K21FY43GMZF8&pf_rd_p=38ca4638-319b-4a39-8061-d5bb4fda4108&pf_rd_r=BZNTEVX1BW5X0H7Y2K27&pf_rd_s=merchandised-search-12&pf_rd_t=101&qid=1645780382&refinements=p_n_availability%3A1318484031%2Cp_85%3A10440599031%2Cp_n_feature_sixteen_browse-bin%3A4149854031&rps=1&s=books&sr=1-2"
 
     amz = AmazonAPI()
     amz.get_product_info(URL)
