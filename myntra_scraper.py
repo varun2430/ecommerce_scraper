@@ -1,5 +1,4 @@
 import json
-from turtle import title
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -12,26 +11,24 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 def get_headers():
     return {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'}
 
-
-
 def get_page_content(URL):
     try:
         page_content = requests.get(URL, headers=get_headers(), verify=False).content
+        return page_content
     except Exception as err:
         print("unable to get page content")
         print(err)
         quit()
-    return page_content
 
 # BS4
 def get_soup(URL):
     try:
         soup = BeautifulSoup(get_page_content(URL), "html.parser")
+        return soup
     except Exception as err:
         print("bs4 error")
         print(err)
         quit()
-    return soup
 
 def get_pdpData_script(soup):
     for s in soup.find_all("script"):
@@ -39,7 +36,6 @@ def get_pdpData_script(soup):
             script = s.get_text(strip=True)
             break
     return script
-
 
 # Format
 def price_to_float(price):
