@@ -75,12 +75,12 @@ class FlipkartAPI:
         try:
             self.base_url = self.get_baseURL(URL)
             self.pid = self.get_productID(self.base_url)
-            self.soup = get_soup(self.base_url)
         except Exception as err:
             print("invalid url")
             print(err)
             quit()
 
+        self.soup = get_soup(self.base_url)
         self.product_title = self.get_productTitle(self.soup)
         self.product_price = self.get_productPrice(self.soup)
 

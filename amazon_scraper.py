@@ -90,12 +90,12 @@ class AmazonAPI:
         try:
             self.asin = self.get_productASIN(URL)
             self.base_url = self.get_baseURL(self.asin)
-            self.soup = get_soup(self.base_url)
         except Exception as err:
             print("invalid url")
             print(err)
             quit()
 
+        self.soup = get_soup(self.base_url)
         self.product_title = self.get_productTitle(self.soup)
         self.product_price = self.get_productPrice(self.soup)
 
