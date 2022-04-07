@@ -1,2 +1,2 @@
 # ecommerce_scraper
-python scripts to scrape popular ecommerce websites.
+python program to scrape popular ecommerce websites using selenium and beautifulsoup4.
