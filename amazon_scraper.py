@@ -4,6 +4,8 @@ from utils import get_soup, get_page, price_to_str
 
 
 
+def get_product_name(soup):
+    return soup.find("span", id="productTitle")
 
 def get_apexDesktop(soup):
     return soup.find("div", id="apex_desktop")
@@ -19,10 +21,6 @@ def get_priceToPay(soup):
 
 def get_price(soup):
     return soup.find("span", id="price")
-
-
-def get_product_name(soup):
-    return soup.find("span", id="productTitle")
 
 
 def get_product_price(soup):
